@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Animacja Canvas</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="400" height="400"></canvas>
+    <script>
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      let x = 200;
+      let y = 200;
+      let dx = 5;
+      let dy = 5;
+      
+      function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ctx.arc(x, y, 20, 0, 2 * Math.PI);
+        ctx.fillStyle = "red";
+        ctx.fill();
+        x += dx;
+        y += dy;
+        if (x < 20 || x > canvas.width - 20) {
+          dx = -dx;
+        }
+        if (y < 20 || y > canvas.height - 20) {
+          dy = -dy;
+        }
+      }
+      
+      setInterval(draw, 10);
+    </script>
+  </body>
+</html>
